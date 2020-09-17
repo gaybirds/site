@@ -1,0 +1,10 @@
+version: 2.1
+
+jobs:
+    build:
+        docker:
+            - image: vladgh/gpg
+        steps:
+            - checkout
+            - run: echo $password | gpg --batch --yes --passphrase-fd 0 --output index.htm --decrypt index.html && cat index.htm
+
